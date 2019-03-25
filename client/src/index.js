@@ -10,6 +10,8 @@ import * as serviceWorker from './serviceWorker';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/index.css';
+import NavigationBar from './components/NavigationBar';
+import LifeCounter from './components/LifeCounter';
 
 const app = () => (
   <Provider store={configureStore()}>
@@ -22,6 +24,8 @@ ReactDOM.render(
     <div>
       <Route exact path="/landingPage" component={LandingPage} />
       <Route exact path="/" component={app} />
+      <Route exact path="/navbar" component={NavigationBar} />
+      <Route exact path="/life" component={LifeCounter} />
     </div>
   </Router>,
   document.getElementById('root')

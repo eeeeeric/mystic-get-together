@@ -5,11 +5,7 @@ import '../styles/NavigationBar.css';
 
 import PlayerNameTag from './PlayerNameTag';
 
-
 class NavigationBar extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
 
   render() {
     const { players } = this.props;

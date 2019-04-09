@@ -130,164 +130,41 @@ class GameArea extends Component {
     const SHORTER_LENGTH = 10;
     const battfieldFieldColumnLength = isToggleSidebarOn ? FULL_LENGTH : SHORTER_LENGTH;
 
+    const players = [
+      {
+        name: 'Eric',
+        profilePicture: 'https://img.scryfall.com/cards/art_crop/en/mma/183.jpg?1517813031',
+        isActivePlayer: true,
+        lifeTotal: 39,
+      },
+      {
+        name: 'Andrew',
+        profilePicture: 'https://img.scryfall.com/cards/art_crop/front/f/a/fa1190a4-3d7e-4500-991f-e36ec3d1d9dc.jpg?1538880646',
+        isActivePlayer: false,
+        lifeTotal: 82,
+      },
+      {
+        name: 'Henry',
+        profilePicture: 'https://img.scryfall.com/cards/art_crop/en/ths/85.jpg?1517813031',
+        isActivePlayer: false,
+        lifeTotal: 36,
+      },
+      {
+        name: 'Anthony',
+        profilePicture: 'https://img.scryfall.com/cards/art_crop/en/bng/156.jpg?1517813031',
+        isActivePlayer: false,
+        lifeTotal: 37,
+      },
+    ];
+
     return (
       <Container
         fluid
         className="main-container d-flex flex-column vh-100 mh-100 w-100 p-0 m-0"
       >
-        <Row
-          className="top-bar-row-wrapper p-0 m-0 d-flex flex-row flex-grow-1 flex-shrink-1"
-          style={{
-            'flex-basis': '10%',
-            overflow: 'auto',
-          }}
-        >
-          <Col
-            xs="10"
-            className="p-0 m-0"
-            style={{
-              'flex-basis': '100%',
-            }}
-          >
-            <NavigationBar
-              life={life}
-              active="battlefield"
-              handleToggleSidebarClick={this.handleToggleSidebarClick}
-            />
-          </Col>
-
-          <Col xs="2" className="flex-grow-1 flex-shrink-1">
-            <Row>
-              <Col className="d-inline-flex mh-100 h-100">
-                <p5>Life: </p5> <p5 className="">{life}</p5>
-              </Col>
-              <Col xs="12" className="d-inline-flex">
-                <ButtonGroup className="d-flex" size="sm">
-                  <Button
-                    outline
-                    color="success"
-                    onClick={() => this.increment(1)}
-                    type="submit"
-                  >
-                    +1
-                  </Button>
-                  <Button
-                    outline
-                    color="warning"
-                    onClick={() => this.decrement(1)}
-                    type="submit"
-                    block
-                  >
-                    -1
-                  </Button>
-                </ButtonGroup>
-              </Col>
-              <Col className="d-inline-flex">
-                <ButtonGroup className="d-flex" size="sm">
-                  <Button
-                    outline
-                    color="primary"
-                    onClick={() => this.increment(5)}
-                    type="submit"
-                  >
-                    +5
-                  </Button>
-                  <Button
-                    outline
-                    color="danger"
-                    onClick={() => this.decrement(5)}
-                    type="submit"
-                    block
-                  >
-                    -5
-                  </Button>
-                </ButtonGroup>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-
-        <Row
-          className="cards-sidebar-row-wrapper flex-row flex-grow-5 flex-shrink-1 p-0 m-0"
-          style={{
-            'flex-basis': '90%',
-          }}
-        >
-
-          <Col
-            xs={battfieldFieldColumnLength}
-            className="battlefield-col p-0 m-0 flex-grow-1 flex-shrink-1 flex-wrap"
-          >
-            {/* Battlefield area. Battlefield is split into two rows. Top and bottom. */}
-            <Container
-              fluid
-              className="cards-rows-container mh-100 h-100 p-0 m-0"
-            >
-              {/* Top row of battlefield */}
-              <Row className="top-cards-row mh-50 h-50 mw-100 w-100 p-0 m-0 border">
-                {/* Main area for cards */}
-                <Col
-                  xs="12"
-                  className="top-cards-row-col d-flex flex-wrap justify-content-start flex-shrink-1 mh-100 h-100 mw-100 w-100 p-0 m-0"
-                >
-                  <>
-
-                    {cards
-                      .filter((card) => _.get(card, 'state.zone') === Zones.BATTLEFIELD)
-                      .map((card) => (
-                        <Col
-                          xs="2"
-                          style={{
-                            'min-width': '80px',
-                            'max-height': '50%',
-                          }}
-                          className="no-gutters"
-                        >
-                          <Col
-                            xs="11"
-                            className="mh-100 h-100 no-gutters"
-                          >
-                            <Card card={card} />
-                          </Col>
-                          <Col
-                            xs="1"
-                            className="mh-100 h-100 no-gutters"
-                          />
-                        </Col>
-                      ))}
-                  </>
-                </Col>
-              </Row>
-
-              {/* Bottom row of cards */}
-              <Row className="bottom-cards-row mh-50 h-50 mw-100 w-100 p-0 m-0 border">
-                <Col
-                  xs="12"
-                  className="battlefield-bottom d-inline-flex flex-wrap justify-content-start card-row card-row-top m-0 p-0"
-                >
-                  {'placeholder text - bottom row'}
-                </Col>
-              </Row>
-            </Container>
-          </Col>
-          {/* Sidebar for exile,graveyard,hand,library  */}
-          {!isToggleSidebarOn && (
-          <Col xs="2" className="sidebar-col p-0 m-0">
-            <Container
-              fluid
-              className="sidebar-col-container mh-100 h-100 mw-100 w-100 p-0 m-0"
-            >
-              <Row className="sidebar-col-container-row mh-100 h-100 mw-100 w-100 p-0 m-0">
-                <Col className="side-bar-col-container-row-col w-100 mw-100 flex-shrink-3 p-0 m-0">
-                  <Sidebar
-                    cards={cards}
-                  />
-                </Col>
-              </Row>
-            </Container>
-          </Col>
-          )}
-        </Row>
+        <NavigationBar
+          players={players}
+        />
       </Container>
     );
   }

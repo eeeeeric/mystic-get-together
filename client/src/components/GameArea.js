@@ -10,14 +10,11 @@ import {
   ButtonGroup,
 } from 'reactstrap';
 
-import Card from './Card.js';
-
 import NavigationBar from './NavigationBar';
 import Sidebar from './Sidebar';
+import Battlefield from './Battlefield';
 
-import '../styles/GameArea.css';
 import '../styles/Card.css';
-import { Zones } from '../constants.js';
 
 class GameArea extends Component {
   constructor(props) {
@@ -70,58 +67,6 @@ class GameArea extends Component {
     this.setState({
       isToggleSidebarOn: !this.state.isToggleSidebarOn,
     });
-  }
-
-  lifeComponent() {
-    return (
-      <Row>
-        <Col className="d-inline-flex">
-          <h5>Life: </h5> <h5 className="">{this.state.life}</h5>
-        </Col>
-        <Col xs="12" className="d-inline-flex">
-          <ButtonGroup className="d-flex" size="sm">
-            <Button
-              outline
-              color="success"
-              onClick={() => this.increment(1)}
-              type="submit"
-            >
-              +1
-            </Button>
-            <Button
-              outline
-              color="warning"
-              onClick={() => this.decrement(1)}
-              type="submit"
-              block
-            >
-              -1
-            </Button>
-          </ButtonGroup>
-        </Col>
-        <Col className="d-inline-flex">
-          <ButtonGroup className="d-flex" size="sm">
-            <Button
-              outline
-              color="primary"
-              onClick={() => this.increment(5)}
-              type="submit"
-            >
-              +5
-            </Button>
-            <Button
-              outline
-              color="danger"
-              onClick={() => this.decrement(5)}
-              type="submit"
-              block
-            >
-              -5
-            </Button>
-          </ButtonGroup>
-        </Col>
-      </Row>
-    );
   }
 
   render() {

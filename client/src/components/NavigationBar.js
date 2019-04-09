@@ -6,7 +6,6 @@ import '../styles/NavigationBar.css';
 import PlayerNameTag from './PlayerNameTag';
 
 class NavigationBar extends React.Component {
-
   render() {
     const { players } = this.props;
     const playersJSX = players.map((player) => (

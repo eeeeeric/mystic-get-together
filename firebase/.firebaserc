@@ -1,7 +1,7 @@
 {
   "projects": {
-    "default": "mystic-the-get-together-8e05e",
     "test": "mystic-the-get-together-test",
-    "prod": "mystic-get-together"
+    "prod": "mystic-get-together",
+    "default": "mystic-get-together"
   }
 }
